@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="cats">
+  <table class="table">
+  <thead>
+    <h1>Cats</h1>
+  </thead>
+  <tbody>
+    <% @cats.each do |cat| %>
+    <tr class="table-active">
+      <td><%= cat.id %></td>
+      <td><%= cat.name %></td>
+      <td><%= cat.color %></td>
+      <td><%= cat.breed %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+
+<%= link_to "New cat", new_cat_path %>
+<%= button_to "Destroy this cat", @cat, method: :delete %>
+
