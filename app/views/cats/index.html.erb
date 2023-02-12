@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <div id="cats">
+  <%= paginate @cats %>
   <table class="table">
   <thead>
     <h1>Cats</h1>
@@ -16,6 +17,7 @@
     <% end %>
   </tbody>
   </table>
+  <%= paginate @cats %>
 </div>
 
 <%= link_to "New cat", new_cat_path %>

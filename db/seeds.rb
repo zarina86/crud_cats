@@ -1,7 +1,8 @@
 require "faker"
 
-# generate 30 cats
-(1..30).each do |id|
+Cat.destroy_all
+# generate 1000 cats
+(1..1000).each do |id|
   Cat.create(
     id: id,
     name: Faker::Creature::Cat.name,

@@ -41,3 +41,5 @@ end
 gem "cssbundling-rails", "~> 1.1"
 
 gem "faker"
+
+gem "kaminari"
