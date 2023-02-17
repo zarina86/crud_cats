@@ -2,7 +2,9 @@ class CatsController < ApplicationController
   before_action :set_cat, only: %i[ show edit update destroy ]
 
   def index
-    @cats = Cat.page params[:page]
+    @q = Cat.ransack(params[:q])
+    
+    @cats = @q.result.page(params[:page])
   end
 
   def show
@@ -18,13 +20,10 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
 
-    respond_to do |format|
-      if @cat.save
-        redirect_to @cats_path
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cat.errors, status: :unprocessable_entity }
-      end
+    if @cat.save
+      redirect_to root_path
+    else
+      format.html { render :new, status: :unprocessable_entity }
     end
   end
 

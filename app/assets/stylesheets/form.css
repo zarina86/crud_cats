@@ -1,0 +1,10 @@
+form {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: var(--size-2);
+  align-items: flex-end;
+}
+
+.loading { visibility: hidden; }
+turbo-frame[busy] .loading { visibility: visible; }

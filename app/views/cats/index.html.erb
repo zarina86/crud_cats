@@ -2,24 +2,45 @@
 
 <div id="cats">
   <%= paginate @cats %>
+
+  <%= search_form_for @q, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
+    <% f.label :name_cont %>
+    <%= f.search_field :name_cont, "data-action": "filters#submit" %>
+
+    <% f.label :color_cont %>
+    <%= f.search_field :color_cont, "data-action": "filters#submit" %>
+    
+    <% f.label :breed_cont %>
+    <%= f.search_field :breed_cont, "data-action": "filters#submit" %>
+  <% end %>
+  
+  <%= turbo_frame_tag "table" do %>
+   <p class="loading">Loading...</p>
+   
   <table class="table">
+    <%= link_to "New", new_cat_path %>     
+    <%= link_to "Show", @cat, method: :get %>
+    <%= link_to "Destroy", @cat, method: :delete %>
   <thead>
     <h1>Cats</h1>
+    <tr>
+      <th><%= sort_link @q, :id, "ID" %></th>
+      <th><%= sort_link @q, :name, "Name" %></th>
+      <th><%= sort_link @q, :color, "Color" %></th>
+      <th><%= sort_link @q, :breed, "Breed" %></th>
+    </tr>
   </thead>
   <tbody>
     <% @cats.each do |cat| %>
-    <tr class="table-active">
-      <td><%= cat.id %></td>
-      <td><%= cat.name %></td>
-      <td><%= cat.color %></td>
-      <td><%= cat.breed %></td>
-    </tr>
+      <tr>
+        <td><%= cat.id %></td>
+        <td><%= cat.name %></td>
+        <td><%= cat.color %></td>
+        <td><%= cat.breed %></td> 
+      </tr>    
     <% end %>
   </tbody>
   </table>
   <%= paginate @cats %>
 </div>
-
-<%= link_to "New cat", new_cat_path %>
-<%= button_to "Destroy this cat", @cat, method: :delete %>
-
+<% end %>
