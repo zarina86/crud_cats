@@ -17,10 +17,8 @@
   <%= turbo_frame_tag "table" do %>
    <p class="loading">Loading...</p>
    
-  <table class="table">
+  <table class="table table-hover">
     <%= link_to "New", new_cat_path %>     
-    <%= link_to "Show", @cat, method: :get %>
-    <%= link_to "Destroy", @cat, method: :delete %>
   <thead>
     <h1>Cats</h1>
     <tr>
@@ -37,7 +35,20 @@
         <td><%= cat.name %></td>
         <td><%= cat.color %></td>
         <td><%= cat.breed %></td> 
-      </tr>    
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" 
+            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><%= link_to "Show", cat, class: "dropdown-item" %></li>
+              <li><%= link_to "Edit", edit_cat_path(cat), class: "dropdown-item" %></li>
+              <li><%= link_to "Destroy", cat, method: :delete, data: { confirm: "Are you sure?"}, class: "dropdown-item" %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
     <% end %>
   </tbody>
   </table>
