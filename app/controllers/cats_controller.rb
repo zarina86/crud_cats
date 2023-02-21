@@ -21,31 +21,24 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to root_path
+      redirect_to @cat
     else
       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @cat.update(cat_params)
-        format.html { redirect_to cat_url(@cat), notice: "Cat was successfully updated." }
-        format.json { render :show, status: :ok, location: @cat }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cat.errors, status: :unprocessable_entity }
-      end
+    if @cat.update(cat_params)
+      redirect_to @cat, notice: "Cat was successfully updated." 
+    else
+      render :edit, status: :unprocessable_entity 
     end
   end
 
   def destroy
     @cat.destroy
 
-    respond_to do |format|
-      format.html { redirect_to cats_url, notice: "Cat was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to cats_url, notice: "Cat was successfully destroyed." 
   end
 
   private

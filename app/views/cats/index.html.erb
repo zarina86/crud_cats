@@ -1,7 +1,3 @@
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
 <p style="color: green"><%= notice %></p>
 
 <div id="cats" class="buffer">
@@ -16,19 +12,18 @@
 
     <div class="buffer-small">
     <% f.label :color_cont %>
-    <%= f.search_field :color_cont, "data-action": "filters#submit", class: "form-control" %>
+    <%= f.search_field :color_cont, "data-action": "filters#submit", placeholder: "color", class: "form-control" %>
     </div>
 
     <div class="buffer-small">
     <% f.label :breed_cont %>
-    <%= f.search_field :breed_cont, "data-action": "filters#submit", class: "form-control" %>
+    <%= f.search_field :breed_cont, "data-action": "filters#submit", placeholder: "breed", class: "form-control" %>
     </div>
   <% end %>
   </div>
   <%= turbo_frame_tag "table" do %>
    <p class="loading">Loading...</p>
 
-  
   <table class="table table-hover table-bordered">
     <%= link_to "New", new_cat_path %>     
   <thead>
@@ -56,7 +51,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><%= link_to "Show", cat, class: "dropdown-item" %></li>
               <li><%= link_to "Edit", edit_cat_path(cat), class: "dropdown-item" %></li>
-              <li><%= link_to "Destroy", cat, method: :delete, data: { confirm: "Are you sure?"}, class: "dropdown-item" %></li>
+              <li><%= button_to "Destroy", cat, method: :delete, form: { data: { turbo_confirm: "Are you sure?"}}, class: "dropdown-item" %></li>
             </ul>
           </div>
         </td>

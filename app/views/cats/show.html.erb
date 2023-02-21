@@ -1,11 +1,19 @@
 <p style="color: green"><%= notice %></p>
+<div class="buffer">
+  <%= render @cat %>
 
-<%= render @cat %>
+  <div class="btn-group" role="group">
+    <%= link_to "Edit", edit_cat_path(@cat), class: "btn btn-primary" %> 
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Actions
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Back", cats_path, class: "dropdown-item" %></li> 
 
-<div>
-  <%= link_to "Edit this cat", edit_cat_path(@cat) %> |
-  <%= link_to "Back to cats", cats_path %>
-
-  <%= link_to "Destroy this cat", @cat, method: :delete, 
-  data: { confirm: "Are you sure?"} %>
+        <li><%= button_to "Destroy", @cat, method: :delete, 
+        form: { data: { turbo_confirm: "Are you sure?"}}, class: "dropdown-item" %></li>
+      </ul>
+    </div>
+  </div>
 </div>

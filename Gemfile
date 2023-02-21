@@ -45,3 +45,5 @@ gem "faker"
 gem "kaminari"
 
 gem "ransack"
+
+gem "dockerfile-rails", ">= 1.1", :group => :development
