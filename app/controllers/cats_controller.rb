@@ -23,7 +23,7 @@ class CatsController < ApplicationController
     if @cat.save
       redirect_to root_path
     else
-      format.html { render :new, status: :unprocessable_entity }
+      render :new
     end
   end
 

@@ -1,0 +1,17 @@
+<% errors = model.errors %>
+<% if errors.any? %>   
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bi-exclamation-octagon-fill"></i>
+      <strong class="mx-1"><%= I18n.t('exclamation.error') %></strong>
+        <div class= "buffer-bottoms-forms">
+          <h5><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being saved:</h5>
+        </div>
+
+        <ul>
+          <% errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>    
+<% end %>

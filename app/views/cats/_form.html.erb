@@ -1,32 +1,32 @@
-<%= form_with(model: cat) do |form| %>
-  <% if cat.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(cat.errors.count, "error") %> prohibited this cat from being saved:</h2>
-
-      <ul>
-        <% cat.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: @cat, data: { turbo: false }) do |form| %>
+  <%= render partial: "partials/form_errors", locals: { model: @cat }%>
+  
+  <div class="grid">
+  <div class="mb-3 mt-3">
+    <%= form.label :name, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :name, class: "form-control" %>
     </div>
-  <% end %>
+  </div><br />
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, class: "form-control" %>
-  </div>
+  <div class="mb-3 mt-3">
+    <%= form.label :color, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :color, class: "form-control" %>
+    </div>
+  </div><br />
 
-  <div>
-    <%= form.label :color, style: "display: block" %>
-    <%= form.text_field :color, class: "form-control" %>
-  </div>
-
-  <div>
-    <%= form.label :breed, style: "display: block" %>
+  <div class="mb-3 mt-3">
+    <%= form.label :breed,  class: "col-sm-2 col-form-label"%>
     <%= form.text_field :breed, class: "form-control" %>
-  </div>
+  </div><br />
 
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
+  </div>
 <% end %>
+
+<div>
+  <%= link_to "Back to cats", cats_path %>
+</div>

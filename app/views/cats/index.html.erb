@@ -1,23 +1,35 @@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 <p style="color: green"><%= notice %></p>
 
-<div id="cats">
+<div id="cats" class="buffer">
   <%= paginate @cats %>
-
+  <div class="buffer-both">
   <%= search_form_for @q, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
-    <% f.label :name_cont %>
-    <%= f.search_field :name_cont, "data-action": "filters#submit" %>
-
-    <% f.label :color_cont %>
-    <%= f.search_field :color_cont, "data-action": "filters#submit" %>
     
+    <div class="buffer-small">
+    <% f.label :name_cont %>
+    <%= f.search_field :name_cont, "data-action": "filters#submit", placeholder: "name", class: "form-control" %>
+    </div>
+
+    <div class="buffer-small">
+    <% f.label :color_cont %>
+    <%= f.search_field :color_cont, "data-action": "filters#submit", class: "form-control" %>
+    </div>
+
+    <div class="buffer-small">
     <% f.label :breed_cont %>
-    <%= f.search_field :breed_cont, "data-action": "filters#submit" %>
+    <%= f.search_field :breed_cont, "data-action": "filters#submit", class: "form-control" %>
+    </div>
   <% end %>
-  
+  </div>
   <%= turbo_frame_tag "table" do %>
    <p class="loading">Loading...</p>
-   
-  <table class="table table-hover">
+
+  
+  <table class="table table-hover table-bordered">
     <%= link_to "New", new_cat_path %>     
   <thead>
     <h1>Cats</h1>
@@ -37,7 +49,7 @@
         <td><%= cat.breed %></td> 
         <td>
           <div class="dropdown">
-            <button class="btn btn-success dropdown-toggle" type="button" 
+            <button class="btn btn-success btn-sm dropdown-toggle" type="button" 
             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Actions
             </button>
@@ -52,6 +64,7 @@
     <% end %>
   </tbody>
   </table>
+  
   <%= paginate @cats %>
 </div>
 <% end %>
