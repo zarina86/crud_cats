@@ -16,8 +16,7 @@
       <%= form.label :color, class: "col-sm-2 col-form-label" %>
       <div class="col-sm-4">
         <%= form.select :color, 
-         (Cat.all.map { |cat| cat.color }).uniq,
-         include_blank: true, class: "form-control" %>
+        @colors_update, class: "form-control" %>
       </div>
     </div>
 
@@ -26,8 +25,7 @@
       <%= form.label :breed,  class: "col-sm-2 col-form-label"%>
       <div class="col-sm-4">
         <%= form.select :breed, 
-         (Cat.all.map { |cat| cat.breed }).uniq,
-         include_blank: true, class: "form-control" %>
+        @breeds_update, class: "form-control" %>
       </div>
     </div> 
     

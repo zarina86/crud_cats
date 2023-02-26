@@ -6,16 +6,16 @@
           class: "form-control" %>
     </div>
 
-    <div class="buffer-small">
+    <div class="buffer-small form-select">
       <% f.label :color_cont %>
-      <%= f.select :color_cont, Cat.all.collect { |cat| cat.color },
+      <%= f.select :color_cont, (Cat.all.collect { |cat| cat.color }).uniq,
         placeholder: "color", include_blank: true, class: "form-control" %>
     </div>
 
-    <div class="buffer-small">
+    <div class="buffer-small form-select">
       <% f.label :breed_cont %>
-      <%= f.select :breed_cont, Cat.all.collect { |cat| cat.breed },
-        placeholder: "breed", include_blank: true, class: "form-control" %>
+      <%= f.select :breed_cont, (Cat.all.collect { |cat| cat.breed }).uniq,
+        placeholder: "breed", include_blank: true, class: "form-select" %>
     </div>
     
     <div class="buffer-small">

@@ -1,7 +1,7 @@
 class CatsController < ApplicationController
   before_action :set_cat, only: %i[show edit update destroy]
-  before_action :set_color_array, only: %i[new]
-  before_action :set_breed_array, only: %i[new]
+  before_action :set_color_array, :set_breed_array, only: %i[new]
+  before_action :set_color_update, :set_breed_update, only: %i[edit update]
 
   def index
     @q = Cat.ransack(params[:q])
@@ -58,5 +58,15 @@ class CatsController < ApplicationController
 
     def set_breed_array
       @breeds = CatBreed.all.map { |cat_breed| cat_breed.breed }
+    end
+
+    def set_color_update
+      @colors = CatColor.joins('FULL JOIN  cats ON cats.color = cat_colors.color')
+      @colors_update = (@colors.all.map { |cat_color| cat_color.color }).uniq
+    end
+
+    def set_breed_update
+      @breeds = CatBreed.joins('FULL JOIN  cats ON cats.breed = cat_breeds.breed')
+      @breeds_update = (@breeds.all.map { |cat_breed| cat_breed.breed }).uniq
     end
 end
