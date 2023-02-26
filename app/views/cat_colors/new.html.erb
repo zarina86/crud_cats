@@ -1,0 +1,17 @@
+<div class="buffer">
+  <h1>Add a new color</h1>
+  <%= form_with(model: @catcolor, data: { turbo: false }) do |form| %>
+    <%= render partial: "partials/form_errors", locals: { model: @catcolor }%>
+    <div class="mb-3 mt-3">
+      <%= form.label :color, class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-4">
+        <%= form.text_field :color, 
+          class: "form-control" %>
+      </div>
+      <div class="mb-3 mt-3">
+        <%= form.submit "Create", class: "btn btn-primary" %>
+        <%= link_to "Back", new_cat_path, class: "btn btn-primary" %> 
+      </div>
+    </div>
+  <% end %>
+</div>

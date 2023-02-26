@@ -1,38 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
 <div id="cats" class="buffer">
+  <%= render "search_form" %>
+
   <%= paginate @cats %>
-  <div class="buffer-both">
-  <%= search_form_for @q, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
-    
-    <div class="buffer-small">
-    <% f.label :name_cont %>
-    <%= f.search_field :name_cont, "data-action": "filters#submit", placeholder: "name", class: "form-control" %>
-    </div>
-
-    <div class="buffer-small">
-    <% f.label :color_cont %>
-    <%= f.search_field :color_cont, "data-action": "filters#submit", placeholder: "color", class: "form-control" %>
-    </div>
-
-    <div class="buffer-small">
-    <% f.label :breed_cont %>
-    <%= f.search_field :breed_cont, "data-action": "filters#submit", placeholder: "breed", class: "form-control" %>
-    </div>
-  <% end %>
-  </div>
-  <%= turbo_frame_tag "table" do %>
-   <p class="loading">Loading...</p>
-
-  <table class="table table-hover table-bordered">
-    <%= link_to "New", new_cat_path %>     
+  <table class="table table-hover table-bordered">   
   <thead>
-    <h1>Cats</h1>
+    <h1 class="text-center">Cats</h1>
     <tr>
       <th><%= sort_link @q, :id, "ID" %></th>
       <th><%= sort_link @q, :name, "Name" %></th>
       <th><%= sort_link @q, :color, "Color" %></th>
       <th><%= sort_link @q, :breed, "Breed" %></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -51,7 +31,8 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><%= link_to "Show", cat, class: "dropdown-item" %></li>
               <li><%= link_to "Edit", edit_cat_path(cat), class: "dropdown-item" %></li>
-              <li><%= button_to "Destroy", cat, method: :delete, form: { data: { turbo_confirm: "Are you sure?"}}, class: "dropdown-item" %></li>
+              <li><%= button_to "Destroy", cat, method: :delete, 
+                 form: { data: { turbo_confirm: "Are you sure?"}}, class: "dropdown-item" %></li>
             </ul>
           </div>
         </td>
@@ -59,7 +40,9 @@
     <% end %>
   </tbody>
   </table>
-  
+  <div class="mb-3">
+    <%= link_to "New", new_cat_path %>  
+  </div>
   <%= paginate @cats %>
 </div>
-<% end %>
+

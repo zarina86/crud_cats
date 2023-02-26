@@ -1,6 +1,6 @@
-# fly.toml file generated for silent-waterfall-2638 on 2023-02-21T19:31:11+06:00
+# fly.toml file generated for autumn-feather-3832 on 2023-02-21T21:42:20+06:00
 
-app = "silent-waterfall-2638"
+app = "autumn-feather-3832"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

@@ -1,7 +1,40 @@
-<h1 class="buffer">Editing cat</h1>
+<h1 class="buffer">Edit</h1>
 
-<%= render "form", cat: @cat %>
+<%= form_with(model: @cat, data: { turbo: false }) do |form| %>
+  <div class="grid buffer">
+    <%= render partial: "partials/form_errors", locals: { model: @cat }%>
+  
+  
+    <div class="mb-3 mt-3">
+      <%= form.label :name, class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-4">
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
 
-<div class="buffer">
-  <%= link_to "Show", @cat %> 
-</div>
+    <div class="mb-3 mt-3">
+      <%= form.label :color, class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-4">
+        <%= form.select :color, 
+         (Cat.all.map { |cat| cat.color }).uniq,
+         include_blank: true, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+    
+      <%= form.label :breed,  class: "col-sm-2 col-form-label"%>
+      <div class="col-sm-4">
+        <%= form.select :breed, 
+         (Cat.all.map { |cat| cat.breed }).uniq,
+         include_blank: true, class: "form-control" %>
+      </div>
+    </div> 
+    
+    <div>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+      <%= link_to "Back", cats_path, class: "btn btn-primary" %> 
+      <%= link_to "Show", @cat, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

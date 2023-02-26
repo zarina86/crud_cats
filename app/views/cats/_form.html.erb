@@ -13,7 +13,10 @@
     <div class="mb-3 mt-3">
       <%= form.label :color, class: "col-sm-2 col-form-label" %>
       <div class="col-sm-4">
-        <%= form.text_field :color, class: "form-control" %>
+        <%= form.select :color, 
+         @colors,
+         include_blank: true, class: "form-control" %>
+        <%= link_to "Add", new_cat_color_path, class: "btn btn-primary" %>
       </div>
     </div>
 
@@ -21,12 +24,15 @@
     
       <%= form.label :breed,  class: "col-sm-2 col-form-label"%>
       <div class="col-sm-4">
-        <%= form.text_field :breed, class: "form-control" %>
+        <%= form.select :breed, 
+         @breeds,
+         include_blank: true, class: "form-control" %>
+         <%= link_to "Add", new_cat_breed_path, class: "btn btn-primary" %>
       </div>
     </div> 
     
     <div>
-      <%= form.submit class: "btn btn-primary" %>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
       <%= link_to "Back", cats_path, class: "btn btn-primary" %> 
     </div>
   </div>

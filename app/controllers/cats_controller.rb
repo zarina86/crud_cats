@@ -1,9 +1,11 @@
 class CatsController < ApplicationController
-  before_action :set_cat, only: %i[ show edit update destroy ]
+  before_action :set_cat, only: %i[show edit update destroy]
+  before_action :set_color_array, only: %i[new]
+  before_action :set_breed_array, only: %i[new]
 
   def index
     @q = Cat.ransack(params[:q])
-    
+   
     @cats = @q.result.page(params[:page])
   end
 
@@ -48,5 +50,13 @@ class CatsController < ApplicationController
 
     def cat_params
       params.require(:cat).permit(:name, :color, :breed)
+    end
+
+    def set_color_array
+      @colors = CatColor.all.map { |cat_color| cat_color.color }
+    end
+
+    def set_breed_array
+      @breeds = CatBreed.all.map { |cat_breed| cat_breed.breed }
     end
 end

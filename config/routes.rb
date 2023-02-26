@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :cats, concerns: :paginatable
+  resources :cat_colors, only: %i[new create destroy show]
+  resources :cat_breeds, only: %i[new create destroy show]
 end

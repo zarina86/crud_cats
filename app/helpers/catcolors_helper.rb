@@ -1,0 +1,2 @@
+module CatcolorsHelper
+end

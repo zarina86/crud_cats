@@ -1,5 +1,8 @@
 class Cat < ApplicationRecord
-  validates :name, presence: true
+  #has_many :cat_colors
+  #has_many :cat_breeds
+  
+  validates :name, presence: true, uniqueness: true
   validates :color, presence: true
   validates :breed, presence: true
   
