@@ -16,7 +16,8 @@
       <%= form.label :color, class: "col-sm-2 col-form-label" %>
       <div class="col-sm-4">
         <%= form.select :color, 
-        @colors_update, class: "form-control" %>
+        @colors_update, 
+        { prompt: 'Select a color' }, class: "form-select" %>
       </div>
     </div>
 
@@ -25,7 +26,8 @@
       <%= form.label :breed,  class: "col-sm-2 col-form-label"%>
       <div class="col-sm-4">
         <%= form.select :breed, 
-        @breeds_update, class: "form-control" %>
+        @breeds_update, 
+        { prompt: 'Select a breed' }, class: "form-select" %>
       </div>
     </div> 
     

@@ -1,17 +1,40 @@
 <div id="<%= dom_id cat %>">
-  <p>
-    <strong>Name:</strong>
-    <%= cat.name %>
-  </p>
+  <div class="card buffer" style="width: 18rem;">
+    <div class="card-header text-center">Featured cat</div>
+      <div class="card-body text-center">
+        <p>
+          <strong>Name:</strong>
+          <%= cat.name %>
+        </p>
 
-  <p>
-    <strong>Color:</strong>
-    <%= cat.color %>
-  </p>
+        <p>
+          <strong>Color:</strong>
+          <%= cat.color %>
+        </p>
 
-  <p>
-    <strong>Breed:</strong>
-    <%= cat.breed %>
-  </p>
+        <p>
+          <strong>Breed:</strong>
+          <%= cat.breed %>
+        </p>
 
+        <div class="btn-group" role="group">
+
+        <%= link_to "Back", cats_path, class: "btn btn-primary" %>
+     
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success dropdown-toggle" 
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Actions
+          </button>
+
+          <ul class="dropdown-menu">
+            <li><%= link_to "Edit", edit_cat_path(@cat), class: "dropdown-item" %></li> 
+
+            <li><%= button_to "Destroy", @cat, method: :delete, 
+              form: { data: { turbo_confirm: "Are you sure?"}}, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

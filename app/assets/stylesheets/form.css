@@ -12,3 +12,20 @@ turbo-frame[busy] .loading { visibility: visible; }
 .buffer-bottom-forms {
   margin-bottom: 18px;
 }
+
+.select-form {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 3px;
+  border: none;
+  background: #f1f1f1;
+  padding: 2px;
+}
+    
+.select-form:hover {
+  background-color: dodgerblue;
+}

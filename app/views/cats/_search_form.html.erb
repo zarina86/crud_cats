@@ -1,25 +1,23 @@
 <div class="buffer-both">
-  <%= search_form_for @q do |f| %> 
-    <div class="buffer-small">
-      <% f.label :name_cont %>
-      <%= f.search_field :name_cont, placeholder: "name", 
-          class: "form-control" %>
-    </div>
+  <%= search_form_for @q do |f| %>
+    <div class="container">
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3"> 
+        <div class="col mb-3 mt-3">
+          <% f.label :color_cont %>
+          <%= f.select :color_cont, (Cat.all.collect { |cat| cat.color }).uniq, 
+           { prompt: 'Select a color' },  class: "form-select" %>
+        </div>
 
-    <div class="buffer-small form-select">
-      <% f.label :color_cont %>
-      <%= f.select :color_cont, (Cat.all.collect { |cat| cat.color }).uniq,
-        placeholder: "color", include_blank: true, class: "form-control" %>
-    </div>
-
-    <div class="buffer-small form-select">
-      <% f.label :breed_cont %>
-      <%= f.select :breed_cont, (Cat.all.collect { |cat| cat.breed }).uniq,
-        placeholder: "breed", include_blank: true, class: "form-select" %>
-    </div>
+        <div class="col mb-3 mt-3">
+          <% f.label :breed_cont %>
+          <%= f.select :breed_cont, (Cat.all.collect { |cat| cat.breed }).uniq,
+           { prompt: 'Select a breed' }, class: "form-select" %>
+        </div>
     
-    <div class="buffer-small">
-      <%= f.submit class: "form-control" %>
+        <div class="col mb-3 mt-3">
+          <%= f.submit class: "form-control" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

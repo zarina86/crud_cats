@@ -15,8 +15,8 @@
       <div class="col-sm-4">
         <%= form.select :color, 
          @colors,
-         include_blank: true, class: "form-control" %>
-        <%= link_to "Add", new_cat_color_path, class: "btn btn-primary" %>
+         { prompt: 'Select a color' }, class: "form-select" %>
+        <%= link_to "Add", new_cat_color_path, class: "btn btn-primary mt-2" %>
       </div>
     </div>
 
@@ -26,13 +26,13 @@
       <div class="col-sm-4">
         <%= form.select :breed, 
          @breeds,
-         include_blank: true, class: "form-control" %>
-         <%= link_to "Add", new_cat_breed_path, class: "btn btn-primary" %>
+         { prompt: 'Select a breed' }, class: "form-select" %>
+         <%= link_to "Add", new_cat_breed_path, class: "btn btn-primary mt-2" %>
       </div>
     </div> 
     
     <div>
-      <%= form.submit "Submit", class: "btn btn-primary" %>
+      <%= form.submit "Submit", class: "btn btn-success" %>
       <%= link_to "Back", cats_path, class: "btn btn-primary" %> 
     </div>
   </div>

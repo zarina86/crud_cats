@@ -19,6 +19,7 @@ class CatBreedsController < ApplicationController
   end
 
   private
+  
   def cat_breed_params
     params.require(:cat_breed).permit(:breed)
   end
