@@ -4,6 +4,6 @@ class Cat < ApplicationRecord
   validates :breed, presence: true
   
   def self.ransackable_attributes(auth_object = nil)
-    %w(name color breed)
+    %w(id name color breed)
   end
 end

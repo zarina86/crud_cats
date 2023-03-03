@@ -1,12 +1,12 @@
 class CatsController < ApplicationController
   before_action :set_cat, only: %i[show edit update destroy]
-  before_action :set_color_array, :set_breed_array, only: %i[new]
+  before_action :set_color_array, :set_breed_array, only: %i[new create]
   before_action :set_color_update, :set_breed_update, only: %i[edit update]
 
   def index
     @q = Cat.ransack(params[:q])
    
-    @cats = @q.result.page(params[:page])
+    @cats = @q.result(distinct: true).page(params[:page])
   end
 
   def show
@@ -23,7 +23,7 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to @cat
+      redirect_to @cat, notice: "Cat was successfully created." 
     else
       render :new
     end

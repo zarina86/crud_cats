@@ -1,7 +1,10 @@
 <%= form_with(model: @cat, data: { turbo: false }) do |form| %>
   <div class="grid buffer">
-    <%= render partial: "partials/form_errors", locals: { model: @cat }%>
-  
+    <div class="row">
+      <div class="col-sm-4">
+        <%= render partial: "partials/form_errors", locals: { model: @cat }%>
+      </div>
+    </div>
   
     <div class="mb-3 mt-3">
       <%= form.label :name, class: "col-sm-2 col-form-label" %>
