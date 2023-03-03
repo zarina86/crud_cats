@@ -1,24 +1,56 @@
-# README
+# CRUD_CATS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+CRUD_CATS is application which allows to create/update/destroy cats.
 
-Things you may want to cover:
+## Before installation:
+Install Ruby by following the instructions [link](https://www.ruby-lang.org/en/documentation/installation/).
 
-* Ruby version
+Ruby version:   ```3.1.3```
 
-* System dependencies
+Rails version: ```7.0.4.2```
 
-* Configuration
+## Installation:
 
-* Database creation
+Clone repository to your computer:
 
-* Database initialization
+    git clone git@github.com:zarina86/crud_cats.git bbq
 
-* How to run the test suite
+Move to the project directory:
 
-* Services (job queues, cache servers, search engines, etc.)
+    cd crud_cats
 
-* Deployment instructions
+Run bundler command to install dependencies:
 
-* ...
+    bundle install
+
+Database creation
+
+    rails db:create
+  
+
+Database initialization
+
+    rails db:migrate
+
+
+Generate a new encrypted credentials file: 
+
+    EDITOR=nano rails credentials:edit 
+
+or 
+
+    EDITOR="code --wait"  rails credentials:edit 
+
+You can also generate new  new encrypted credentials file for environments:
+
+    EDITOR="code --wait"  rails credentials:edit  --environment=production
+    
+ ## Project technologies:
+  
+ * Active Record - Postgresql
+ 
+ * CSS - Bootstrap 5, custom styles
+ 
+ 
+ 
+ 
