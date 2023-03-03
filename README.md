@@ -1,6 +1,6 @@
 # CRUD_CATS
 
-CRUD_CATS is application which allows to create/update/destroy cats.
+CRUD_CATS is the application which allows to create/update/destroy cats.
 
 ## Before installation:
 Install Ruby by following the instructions [link](https://www.ruby-lang.org/en/documentation/installation/).
