@@ -51,6 +51,10 @@ You can also generate new  new encrypted credentials file for environments:
  
  * CSS - Bootstrap 5, custom styles
  
+ * gem ransack
+
+ * gem kaminari
+ 
  
  
  
